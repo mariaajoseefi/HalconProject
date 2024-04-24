@@ -27,6 +27,7 @@ Route::get('/orders/{order}', 'App\Http\Controllers\OrderController@show')->name
 Route::get('/orders/{order}/edit', 'App\Http\Controllers\OrderController@edit')->name('orders.edit');
 Route::put('/orders/{order}', 'App\Http\Controllers\OrderController@update')->name('orders.update');
 Route::delete('/orders/{order}', 'App\Http\Controllers\OrderController@destroy')->name('orders.destroy');
+Route::get('/track-order', 'App\Http\Controllers\OrderController@trackOrder')->name('track-order');
 
 // órdenes archivadas
 Route::patch('/orders/{order}/archive', 'App\Http\Controllers\OrderController@archive')->name('orders.archive');

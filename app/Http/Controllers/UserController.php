@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Role;
 
 class UserController extends Controller
 {
@@ -40,8 +41,8 @@ class UserController extends Controller
 
     public function edit(User $user)
     {
-        // show the form for editing the specified user
-        return view('users.edit', compact('user'));
+        $roles = Role::all(); // obtiene todos los roles para listar en el formulario
+        return view('users.edit', compact('user', 'roles')); // pasa tanto el usuario como los roles a la vista
     }
 
     public function update(Request $request, User $user)

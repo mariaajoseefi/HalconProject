@@ -78,7 +78,11 @@ class OrderController extends Controller
         $invoiceNumber = $request->invoice_number;
         $order = Order::where('invoice_number', $invoiceNumber)->with('status')->first();
         
-        return view('users.unregistered', compact('order'));
+        if (!$order) {
+            return back()->with('error', 'No order found with that invoice number.');
+        }
+        
+        return view('unregistered', compact('order'));
     }
 
     public function archive(Order $order)
